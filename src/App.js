@@ -1,7 +1,7 @@
-import Reactm from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
-class App() extends Component {
+class App extends Component {
     state = {
         articles: []
     }
@@ -23,12 +23,15 @@ class App() extends Component {
     }
     render()
     {
-
+        let articles  = this.state.articles.map((article) => {
+            return (
+                <div>{article.title}</div>
+            )
+        });
 
         return (
             <div className="App">
-
-
+                {articles}
             </div>
         )
     }
