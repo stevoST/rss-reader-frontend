@@ -1,37 +1,43 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 
 class App extends Component {
     state = {
         articles: []
     }
-    // const fetchData = async () => {
-    //     const resp = await fetch('http://localhost:8080/');
-    //     const data = await resp.json();
-    //     console.log(data);
-    // };
 
-    // fetchData();
-
-    componentWillMount()
-    {
+    componentWillMount() {
         axios.get('http://localhost:8080/').then((response) => {
             this.setState({
                 articles: response.data
             })
         });
+        console.log(this.state.articles);
     }
-    render()
-    {
-        let articles  = this.state.articles.map((article) => {
+
+    render() {
+        let articles = this.state.articles.map((article) => {
             return (
-                <div>{article.title}</div>
+                <div class="jumbotron">
+                    <h4>{article.title}</h4>
+                    {article.description}
+                </div>
+
             )
         });
 
         return (
             <div className="App">
-                {articles}
+                <div class="container">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-8">
+                            {articles}
+                        </div>
+                        <div class="col"></div>
+                    </div>
+
+                </div>
             </div>
         )
     }
