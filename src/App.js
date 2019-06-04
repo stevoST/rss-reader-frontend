@@ -1,13 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
+
 import Nav from './Nav';
 import Configuration from './Configuration';
+import Feeds from './Feeds';
+
 
 
 function App() {
     return (
+        <Router>
         <div>
-            <h1>App</h1>
+            <Nav/>
+            <Route path="/configuration" component={Configuration} />
+            <Route path="/feeds" component={Feeds} />
         </div>
+        </Router>
     )
 }
 
