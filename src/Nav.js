@@ -9,16 +9,14 @@ function Nav() {
     return (
         <nav className="navbar navbar-dark bg-dark">
             {/*<a className="navbar-brand" href="#">RSS Reader</a>*/}
-            <Link to={Homepage}>RSS Reader </Link>
+            <Link to="/">RSS Reader </Link>
             <ul className="navbar-nav">
-                <Link to={Feeds}>
+                <Link to="/feeds">
                     <li className="nav-item active">Feeds
-                        {/*<a className="nav-item" href="#">Show All RSS</a>*/}
                     </li>
                 </Link>
-                <Link to={Configuration}>
+                <Link to="/configuration">
                     <li className="nav-item">Configuration
-                        {/*<a className="nav-item" href="#">Show All RSS</a>*/}
                     </li>
                 </Link>
             </ul>

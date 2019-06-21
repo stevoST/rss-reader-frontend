@@ -7,7 +7,7 @@ class Feeds extends Component {
     }
 
     componentWillMount() {
-        axios.get('http://localhost:8080/').then((response) => {
+        axios.get('http://localhost:8080/articles').then((response) => {
             this.setState({
                 articles: response.data
             })
@@ -18,7 +18,7 @@ class Feeds extends Component {
     render() {
         let articles = this.state.articles.map((article) => {
             return (
-                <div class="jumbotron">
+                <div className="jumbotron">
                     <a href={article.link}><h4>{article.title}</h4></a>
                     {article.description}
                 </div>
@@ -29,13 +29,13 @@ class Feeds extends Component {
         return (
             <div className="App">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col-8">
+                <div className="container">
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col-8">
                             {articles}
                         </div>
-                        <div class="col"></div>
+                        <div className="col"></div>
                     </div>
 
                 </div>
