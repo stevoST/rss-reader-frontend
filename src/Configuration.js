@@ -18,7 +18,7 @@ class Configuration extends Component{
 
     render()
     {
-        let configuration = this.state.configurations.map((configuration) => {
+        let configurations = this.state.configurations.map((configuration) => {
             return (
                 <div class="jumbotron">
                     {configuration.feedName}<br/>
@@ -31,6 +31,7 @@ class Configuration extends Component{
         return (
             <div>
                 <h1>Configuration</h1>
+                {configurations}
             </div>
         )
     }
