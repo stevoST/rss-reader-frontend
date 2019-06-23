@@ -12,7 +12,6 @@ class Feeds extends Component {
                 articles: response.data
             })
         });
-        console.log(this.state.articles);
     }
 
     render() {

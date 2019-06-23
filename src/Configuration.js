@@ -13,14 +13,14 @@ class Configuration extends Component{
                 configurations: response.data
             })
         });
-        console.log(this.state.configurations);
+
     }
 
     render()
     {
         let configurations = this.state.configurations.map((configuration) => {
             return (
-                <div class="jumbotron">
+                <div className="jumbotron">
                     {configuration.feedName}<br/>
                     {configuration.feedLink}
                 </div>
@@ -30,6 +30,7 @@ class Configuration extends Component{
 
         return (
             <div>
+
                 <h1>Configuration</h1>
                 {configurations}
             </div>
