@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
-import Feeds from "./Feeds";
-import Configuration from "./Configuration";
-import Homepage from "./Homepage";
+
 
 
 function Nav() {

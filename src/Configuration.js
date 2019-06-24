@@ -29,10 +29,24 @@ class Configuration extends Component{
         });
 
         return (
-            <div>
+            <div className="container">
 
                 <h1>Configuration</h1>
-                {configurations}
+                <div className="row">
+                    <div className="col"></div>
+                    <div className="col-8">
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Feed Name</th>
+                                <th>Feed Link</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        {configurations}</div>
+                    <div className="col"></div>
+                </div>
             </div>
         )
     }
