@@ -20,10 +20,19 @@ class Configuration extends Component{
     {
         let configurations = this.state.configurations.map((configuration) => {
             return (
-                <div className="jumbotron">
-                    {configuration.feedName}<br/>
-                    {configuration.feedLink}
-                </div>
+
+
+            <tr key={configuration.id}>
+                <td>{configuration.id}</td>
+                <td>{configuration.feedName}</td>
+                <td>{configuration.feedLink}</td>
+                <td>
+                    <button type="button" className="btn btn-success">Edit</button>
+                    <button type="button" className="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+
+
 
             )
         });
@@ -41,21 +50,14 @@ class Configuration extends Component{
                                 <th>#</th>
                                 <th>Feed Name</th>
                                 <th>Feed Link</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>meno</td>
-                                <td>linka</td>
-                                <td>
-                                    <button type="button" className="btn btn-success">Edit</button>
-                                    <button type="button" className="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
+                            {configurations}
                             </tbody>
                         </table>
-                        {configurations}</div>
+                        </div>
                     <div className="col"></div>
                 </div>
             </div>
