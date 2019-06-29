@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Label, Input, FormGroup,  Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 class Configuration extends Component{
     state = {
         configurations: [],
-        AddFeedModal: false
+        addFeedModal: false,
+        newFeedData: {
+            feedName: '',
+            feedLink: ''
+        }
     }
 
     componentWillMount() {
@@ -20,8 +24,21 @@ class Configuration extends Component{
 
     toggleAddFeedModal(){
         this.setState({
-            AddFeedModal: true
+            addFeedModal: ! this.state.addFeedModal
         })
+    }
+
+    addFeed(){
+        axios.post('http://localhost:8080/configuration', this.state.newFeedData).then((response) => {
+            let { configurations } = this.state;
+
+            configurations.push(response.data);
+
+            this.setState({ configurations, addFeedModal: false, newConfigurationsData: {
+                    feedName: '',
+                    feedLink: ''
+                }})
+        });
     }
 
     render()
@@ -51,14 +68,33 @@ class Configuration extends Component{
                 <h1>Configuration</h1>
 
                 <Button color="primary" onClick={this.toggleAddFeedModal.bind(this)}>Add Feed</Button>
-                <Modal isOpen={this.state.AddFeedModal} toggle={this.toggleAddFeedModal.bind(this)}>
+                <Modal isOpen={this.state.addFeedModal} toggle={this.toggleAddFeedModal.bind(this)}>
                     <ModalHeader toggle={this.toggleAddFeedModal.bind(this)}>Add New Feed</ModalHeader>
                     <ModalBody>
-                        test text
+                        <FormGroup>
+                            <Label for="feedName">Feed Name</Label>
+                            <Input id="feedName" value={this.state.newFeedData.feedName} onChange={(e) => {
+                                let { newFeedData } = this.state;
+
+                                newFeedData.feedName = e.target.value;
+
+                                this.setState({newFeedData});
+                            }}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="feedLink">Feed Link</Label>
+                            <Input id="feedLink" value={this.state.newFeedData.feedLink} onChange={(e) => {
+                                let { newFeedData } = this.state;
+
+                                newFeedData.feedLink = e.target.value;
+
+                                this.setState({ newFeedData });
+                            }} />
+                        </FormGroup>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button color="primary" onClick={this.addFeed.bind(this)}>Add Feed</Button>{' '}
+                        <Button color="secondary" onClick={this.toggleAddFeedModal.bind(this)}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
 
