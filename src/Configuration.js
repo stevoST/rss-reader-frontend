@@ -77,7 +77,7 @@ class Configuration extends Component{
                 <td>{configuration.feedName}</td>
                 <td>{configuration.feedLink}</td>
                 <td>
-                    <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.FeedLink)}>Edit</button>
+                    <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink)}>Edit</button>
                     <button type="button" className="btn btn-danger">Delete</button>
                 </td>
             </tr>
