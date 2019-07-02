@@ -66,6 +66,20 @@ class Configuration extends Component{
 
     }
 
+    deleteFeed(id){
+        axios.delete('http://localhost:8080/configuration/' + id).then((response) => {
+            this._refreshFeeds();
+        });
+    }
+
+    _refreshFeeds() {
+        axios.get('http://localhost:8080/configuration').then((response) => {
+            this.setState({
+                configurations: response.data
+            })
+        });
+    }
+
     render()
     {
         let configurations = this.state.configurations.map((configuration) => {
@@ -78,7 +92,7 @@ class Configuration extends Component{
                 <td>{configuration.feedLink}</td>
                 <td>
                     <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink)}>Edit</button>
-                    <button type="button" className="btn btn-danger">Delete</button>
+                    <button type="button" className="btn btn-danger" onClick={this.deleteFeed(this, configuration.id)}>Delete</button>
                 </td>
             </tr>
 
