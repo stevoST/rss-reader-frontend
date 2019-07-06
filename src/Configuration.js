@@ -62,8 +62,14 @@ class Configuration extends Component{
 
     }
 
-    updateFeed(){
+    updateFeed() {
+        let { feedName, feedLink } = this.state.editFeedData;
 
+        axios.put('http://localhost:8080/configuration/' + this.state.editFeedData, {
+            feedName, feedLink
+        }).then((response) => {
+            this._refreshFeeds();
+        });
     }
 
     deleteFeed(id){
