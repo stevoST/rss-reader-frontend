@@ -63,13 +63,19 @@ class Configuration extends Component{
     }
 
     updateFeed() {
-        let { feedName, feedLink } = this.state.editFeedData;
+        axios.post('http://localhost:8080/configuration', this.state.editFeedData).then((response) => {
+            console.log(this.state.editFeedData);
+            console.log(response.data);
 
-        axios.put('http://localhost:8080/configuration/' + this.state.editFeedData, {
-            feedName, feedLink
-        }).then((response) => {
-            this._refreshFeeds();
         });
+
+        // let { feedName, feedLink } = this.state.editFeedData;
+        //
+        // axios.put('http://localhost:8080/configuration/' + this.state.editFeedData, {
+        //     feedName, feedLink
+        // }).then((response) => {
+        //     this._refreshFeeds();
+        // });
     }
 
     deleteFeed(id){
