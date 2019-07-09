@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 function Nav() {
     return (
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar">
             <ul className="nav nav-tabs">
                 <li className="nav-item">
                     <Link className="nav-link active" to="/">RSS Reader </Link>
