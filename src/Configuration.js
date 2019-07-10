@@ -10,13 +10,15 @@ class Configuration extends Component{
         editFeedModal: false,
         newFeedData: {
             feedName: '',
-            feedLink: ''
+            feedLink: '',
+            feedItem: ''
         },
 
         editFeedData: {
             id: '',
             feedName: '',
-            feedLink: ''
+            feedLink: '',
+            feedItem: ''
         }
     }
 
@@ -49,14 +51,15 @@ class Configuration extends Component{
 
             this.setState({ configurations, addFeedModal: false, newConfigurationsData: {
                     feedName: '',
-                    feedLink: ''
+                    feedLink: '',
+                    feedItem: ''
                 }});
         });
     }
 
-    editFeed(id, feedName, feedLink){
+    editFeed(id, feedName, feedLink, feedItem){
         this.setState({
-            editFeedData: {id, feedName, feedLink},
+            editFeedData: {id, feedName, feedLink, feedItem},
             editFeedModal: !this.state.editFeedModal
         })
 
@@ -142,6 +145,16 @@ class Configuration extends Component{
                                 this.setState({ newFeedData });
                             }} />
                         </FormGroup>
+                        <FormGroup>
+                            <Label for="feedItem">Feed Item</Label>
+                            <Input id="feedItem" value={this.state.newFeedData.feedItem} onChange={(e) => {
+                                let { newFeedData } = this.state;
+
+                                newFeedData.feedItem = e.target.value;
+
+                                this.setState({ newFeedData });
+                            }} />
+                        </FormGroup>
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.addFeed.bind(this)}>Add Feed</Button>{' '}
@@ -171,6 +184,16 @@ class Configuration extends Component{
                                 editFeedData.feedLink = e.target.value;
 
                                 this.setState({ editFeedData });
+                            }} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="feedItem">Feed Item</Label>
+                            <Input id="feedItem" value={this.state.newFeedData.feedItem} onChange={(e) => {
+                                let { newFeedData } = this.state;
+
+                                newFeedData.feedItem = e.target.value;
+
+                                this.setState({ newFeedData });
                             }} />
                         </FormGroup>
                     </ModalBody>
