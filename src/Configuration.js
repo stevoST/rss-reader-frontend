@@ -106,7 +106,7 @@ class Configuration extends Component{
                 <td>{configuration.feedName}</td>
                 <td>{configuration.feedLink}</td>
                 <td>
-                    <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink)}>Edit</button>
+                    <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedItem)}>Edit</button>
                     <button type="button" className="btn btn-danger" onClick={this.deleteFeed.bind(this, configuration.id)}>Delete</button>
                 </td>
             </tr>
@@ -188,12 +188,12 @@ class Configuration extends Component{
                         </FormGroup>
                         <FormGroup>
                             <Label for="feedItem">Feed Item</Label>
-                            <Input id="feedItem" value={this.state.newFeedData.feedItem} onChange={(e) => {
-                                let { newFeedData } = this.state;
+                            <Input id="feedItem" value={this.state.editFeedData.feedItem} onChange={(e) => {
+                                let { editFeedData } = this.state;
 
-                                newFeedData.feedItem = e.target.value;
+                                editFeedData.feedItem = e.target.value;
 
-                                this.setState({ newFeedData });
+                                this.setState({ editFeedData });
                             }} />
                         </FormGroup>
                     </ModalBody>
