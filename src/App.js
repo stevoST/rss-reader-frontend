@@ -16,6 +16,7 @@ function App() {
                     <Route path="/" exact component={Homepage}/>
                     <Route path="/configuration" component={Configuration}/>
                     <Route path="/feeds" component={Feeds}/>
+                    <Route path="/configuration/:id" component={Homepage}/>
                 {/*</switch>*/}
             </div>
         </Router>

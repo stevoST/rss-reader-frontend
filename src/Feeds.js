@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 class Feeds extends Component {
     state = {
@@ -11,6 +13,7 @@ class Feeds extends Component {
             this.setState({
                 articles: response.data
             })
+                console.log(response.data);
         });
     }
 
@@ -21,6 +24,8 @@ class Feeds extends Component {
                 <div className="jumbotron" key={article.id}>
                     <a href={article.link}><h4>{article.title}</h4></a>
                     {article.description}
+                    <br />
+                    <b><Moment>{article.test}</Moment></b>
                 </div>
 
             )
