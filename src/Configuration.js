@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
+import {Link} from 'react-router-dom'
 import { Label, Input, FormGroup,  Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
@@ -108,6 +109,9 @@ class Configuration extends Component{
                 <td>
                     <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedItem)}>Edit</button>
                     <button type="button" className="btn btn-danger" onClick={this.deleteFeed.bind(this, configuration.id)}>Delete</button>
+                    <Link to={`/configuration/${configuration.id}`}>
+                        <button type="button" className="btn btn-danger">Edit Feed Page</button>
+                    </Link>
                 </td>
             </tr>
 
