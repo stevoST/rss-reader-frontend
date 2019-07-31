@@ -5,6 +5,7 @@ import Nav from './Nav';
 import Configuration from './Configuration';
 import Feeds from './Feeds';
 import Homepage from "./Homepage";
+import ConfigurationDetail from "./ConfigurationDetail";
 
 
 function App() {
@@ -13,10 +14,10 @@ function App() {
             <div>
                 <Nav/>
                 {/*<switch>*/}
-                    <Route path="/" exact component={Homepage}/>
                     <Route path="/configuration" component={Configuration}/>
                     <Route path="/feeds" component={Feeds}/>
-                    <Route path="/configuration/:id" component={Homepage}/>
+                    <Route path="/" exact component={Homepage}/>
+                    <Route path="/configuration/:id" exact component={ConfigurationDetail}/>
                 {/*</switch>*/}
             </div>
         </Router>
