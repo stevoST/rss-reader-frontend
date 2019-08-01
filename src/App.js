@@ -14,10 +14,10 @@ function App() {
             <div>
                 <Nav/>
                 {/*<switch>*/}
-                    <Route path="/configuration" component={Configuration}/>
+                    <Route path="/configuration" exact component={Configuration}/>
                     <Route path="/feeds" component={Feeds}/>
                     <Route path="/" exact component={Homepage}/>
-                    <Route path="/configuration/:id" exact component={ConfigurationDetail}/>
+                    <Route path="/configuration/:id" component={ConfigurationDetail}/>
                 {/*</switch>*/}
             </div>
         </Router>
