@@ -20,7 +20,10 @@ class ConfigurationDetail extends Component {
         return (
             <div>
                 <h1>Detail Page</h1>
-                {this.state.configuration.feedName}
+                {this.state.configuration.id} <br />
+                {this.state.configuration.feedName} <br />
+                {this.state.configuration.feedLink} <br />
+                {this.state.configuration.feedItem} <br />
             </div>
         )
     }
