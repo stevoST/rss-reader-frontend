@@ -21,9 +21,30 @@ class ConfigurationDetail extends Component {
             <div>
                 <h1>Detail Page</h1>
                 {this.state.configuration.id} <br />
-                {this.state.configuration.feedName} <br />
-                {this.state.configuration.feedLink} <br />
-                {this.state.configuration.feedItem} <br />
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-default">Feed Name</span>
+                    </div>
+                    <input type="text" value={this.state.configuration.feedName} className="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" />
+                </div>
+
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-default">Feed Link</span>
+                    </div>
+                    <input type="text" value={this.state.configuration.feedLink} className="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" />
+                </div>
+
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-default">Date Format</span>
+                    </div>
+                    <input type="text" value={this.state.configuration.feedItem} className="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default" />
+                </div>
+
             </div>
         )
     }
