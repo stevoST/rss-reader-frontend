@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import {API_BASE_URL} from "./config";
 
 class Feeds extends Component {
     state = {
@@ -9,7 +10,7 @@ class Feeds extends Component {
     }
 
     componentWillMount() {
-        axios.get('http://localhost:8080/articles').then((response) => {
+        axios.get(API_BASE_URL + 'articles').then((response) => {
             this.setState({
                 articles: response.data
             })

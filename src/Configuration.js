@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios/index";
 import {Link} from 'react-router-dom'
 import { Label, Input, FormGroup,  Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {API_BASE_URL} from "./config";
 
 
 class Configuration extends Component{
@@ -24,7 +25,7 @@ class Configuration extends Component{
     }
 
     componentWillMount() {
-        axios.get('http://localhost:8080/configuration').then((response) => {
+        axios.get(API_BASE_URL + 'configuration').then((response) => {
             this.setState({
                 configurations: response.data
             })
@@ -45,7 +46,7 @@ class Configuration extends Component{
     }
 
     addFeed(){
-        axios.post('http://localhost:8080/configuration', this.state.newFeedData).then((response) => {
+        axios.post(API_BASE_URL + 'configuration', this.state.newFeedData).then((response) => {
             let { configurations } = this.state;
 
             configurations.push(response.data);
@@ -67,7 +68,7 @@ class Configuration extends Component{
     }
 
     updateFeed() {
-        axios.post('http://localhost:8080/configuration', this.state.editFeedData).then((response) => {
+        axios.post(API_BASE_URL + '/configuration', this.state.editFeedData).then((response) => {
             console.log(this.state.editFeedData);
             console.log(response.data);
 
@@ -75,7 +76,7 @@ class Configuration extends Component{
 
         // let { feedName, feedLink } = this.state.editFeedData;
         //
-        // axios.put('http://localhost:8080/configuration/' + this.state.editFeedData, {
+        // axios.put(API_BASE_URL + 'configuration/' + this.state.editFeedData, {
         //     feedName, feedLink
         // }).then((response) => {
         //     this._refreshFeeds();
@@ -83,13 +84,13 @@ class Configuration extends Component{
     }
 
     deleteFeed(id){
-        axios.delete('http://localhost:8080/configuration/' + id).then((response) => {
+        axios.delete(API_BASE_URL + 'configuration/' + id).then((response) => {
             this._refreshFeeds();
         });
     }
 
     _refreshFeeds() {
-        axios.get('http://localhost:8080/configuration').then((response) => {
+        axios.get(API_BASE_URL + 'configuration').then((response) => {
             this.setState({
                 configurations: response.data
             })
