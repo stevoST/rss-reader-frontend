@@ -14,12 +14,11 @@ class Feeds extends Component {
             this.setState({
                 articles: response.data
             })
-                console.log(response.data);
         });
     }
 
     render() {
-        let articles = this.state.articles.map((article) => {
+        const articles = this.state.articles.map((article) => {
 
             return (
                 <div className="jumbotron" key={article.id}>

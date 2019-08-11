@@ -17,15 +17,16 @@ class ConfigurationDetail extends Component {
 
     }
     render() {
+            const { configuration } = this.state;
         return (
             <div>
                 <h1>Detail Page</h1>
-                {this.state.configuration.id} <br />
+                {configuration.id} <br />
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-default">Feed Name</span>
                     </div>
-                    <input type="text" value={this.state.configuration.feedName} className="form-control" aria-label="Sizing example input"
+                    <input type="text" value={configuration.feedName} className="form-control" aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default" />
                 </div>
 
@@ -33,7 +34,7 @@ class ConfigurationDetail extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-default">Feed Link</span>
                     </div>
-                    <input type="text" value={this.state.configuration.feedLink} className="form-control" aria-label="Sizing example input"
+                    <input type="text" value={configuration.feedLink} className="form-control" aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default" />
                 </div>
 
@@ -41,7 +42,7 @@ class ConfigurationDetail extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-default">Date Format</span>
                     </div>
-                    <input type="text" value={this.state.configuration.feedItem} className="form-control" aria-label="Sizing example input"
+                    <input type="text" value={configuration.feedItem} className="form-control" aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default" />
                 </div>
 

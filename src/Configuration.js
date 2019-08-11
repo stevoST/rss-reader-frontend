@@ -47,7 +47,7 @@ class Configuration extends Component{
 
     addFeed(){
         axios.post(API_BASE_URL + 'configuration', this.state.newFeedData).then((response) => {
-            let { configurations } = this.state;
+            const { configurations } = this.state;
 
             configurations.push(response.data);
 
@@ -69,9 +69,6 @@ class Configuration extends Component{
 
     updateFeed() {
         axios.post(API_BASE_URL + '/configuration', this.state.editFeedData).then((response) => {
-            console.log(this.state.editFeedData);
-            console.log(response.data);
-
         });
 
         // let { feedName, feedLink } = this.state.editFeedData;
@@ -99,7 +96,7 @@ class Configuration extends Component{
 
     render()
     {
-        let configurations = this.state.configurations.map((configuration) => {
+        const configurations = this.state.configurations.map((configuration) => {
             return (
 
 
@@ -133,7 +130,7 @@ class Configuration extends Component{
                         <FormGroup>
                             <Label for="feedName">Feed Name</Label>
                             <Input id="feedName" value={this.state.newFeedData.feedName} onChange={(e) => {
-                                let { newFeedData } = this.state;
+                                const { newFeedData } = this.state;
 
                                 newFeedData.feedName = e.target.value;
 
@@ -143,7 +140,7 @@ class Configuration extends Component{
                         <FormGroup>
                             <Label for="feedLink">Feed Link</Label>
                             <Input id="feedLink" value={this.state.newFeedData.feedLink} onChange={(e) => {
-                                let { newFeedData } = this.state;
+                                const { newFeedData } = this.state;
 
                                 newFeedData.feedLink = e.target.value;
 
@@ -153,7 +150,7 @@ class Configuration extends Component{
                         <FormGroup>
                             <Label for="feedItem">Feed Item</Label>
                             <Input id="feedItem" value={this.state.newFeedData.feedItem} onChange={(e) => {
-                                let { newFeedData } = this.state;
+                                const { newFeedData } = this.state;
 
                                 newFeedData.feedItem = e.target.value;
 
@@ -174,7 +171,7 @@ class Configuration extends Component{
                         <FormGroup>
                             <Label for="feedName">Feed Name</Label>
                             <Input id="feedName" value={this.state.editFeedData.feedName} onChange={(e) => {
-                                let { editFeedData } = this.state;
+                                const { editFeedData } = this.state;
 
                                 editFeedData.feedName = e.target.value;
 
@@ -184,7 +181,7 @@ class Configuration extends Component{
                         <FormGroup>
                             <Label for="feedLink">Feed Link</Label>
                             <Input id="feedLink" value={this.state.editFeedData.feedLink} onChange={(e) => {
-                                let { editFeedData } = this.state;
+                                const { editFeedData } = this.state;
 
                                 editFeedData.feedLink = e.target.value;
 
@@ -194,7 +191,7 @@ class Configuration extends Component{
                         <FormGroup>
                             <Label for="feedItem">Feed Item</Label>
                             <Input id="feedItem" value={this.state.editFeedData.feedItem} onChange={(e) => {
-                                let { editFeedData } = this.state;
+                                const { editFeedData } = this.state;
 
                                 editFeedData.feedItem = e.target.value;
 
