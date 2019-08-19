@@ -3,9 +3,9 @@ import React from 'react';
 
 function Homepage() {
     return (
-        <div>
+        <main role="main" className="container">
             <h1>Homepage</h1>
-        </div>
+        </main>
     )
 }
 
