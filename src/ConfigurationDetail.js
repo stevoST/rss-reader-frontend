@@ -19,7 +19,7 @@ class ConfigurationDetail extends Component {
     render() {
             const { configuration } = this.state;
         return (
-            <div>
+            <div className="container mt-5">
                 <h1>Detail Page</h1>
                 {configuration.id} <br />
                 <div className="input-group mb-3">

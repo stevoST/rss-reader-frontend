@@ -100,13 +100,13 @@ class Configuration extends Component{
             return (
 
 
-            <tr key={configuration.id}>
+            <tr key={configuration.id} className="mt-5">
                 <td>{configuration.id}</td>
                 <td>{configuration.feedName}</td>
                 <td>{configuration.feedLink}</td>
                 <td>
-                    <button type="button" className="btn btn-success" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedItem)}>Edit</button>
-                    <button type="button" className="btn btn-danger" onClick={this.deleteFeed.bind(this, configuration.id)}>Delete</button>
+                    <button type="button" className="btn btn-success mr-2 mb-1" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedItem)}>Edit</button>
+                    <button type="button" className="btn btn-danger mb-1" onClick={this.deleteFeed.bind(this, configuration.id)}>Delete</button>
                     <Link to={`/configuration/${configuration.id}`}>
                         <button type="button" className="btn btn-danger">Edit Feed Page</button>
                     </Link>
@@ -119,7 +119,7 @@ class Configuration extends Component{
         });
 
         return (
-            <div className="container">
+            <div className="container mt-5">
 
                 <h1>Configuration</h1>
 

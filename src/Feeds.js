@@ -21,7 +21,7 @@ class Feeds extends Component {
         const articles = this.state.articles.map((article) => {
 
             return (
-                <div className="jumbotron" key={article.id}>
+                <div className="jumbotron mt-5" key={article.id}>
                     <a href={article.link}><h4>{article.title}</h4></a>
                     {article.description}
                     <br />

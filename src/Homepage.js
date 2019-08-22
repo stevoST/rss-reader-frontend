@@ -3,9 +3,9 @@ import React from 'react';
 
 function Homepage() {
     return (
-        <main role="main" className="container">
+        <div className="container mt-5">
             <h1>Homepage</h1>
-        </main>
+        </div>
     )
 }
 
