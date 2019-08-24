@@ -13,14 +13,14 @@ class Configuration extends Component{
         newFeedData: {
             feedName: '',
             feedLink: '',
-            feedItem: ''
+            feedDateFormat: ''
         },
 
         editFeedData: {
             id: '',
             feedName: '',
             feedLink: '',
-            feedItem: ''
+            feedDateFormat: ''
         }
     }
 
@@ -28,6 +28,7 @@ class Configuration extends Component{
         axios.get(API_BASE_URL + 'configuration').then((response) => {
             this.setState({
                 configurations: response.data
+
             })
         });
 
@@ -54,14 +55,14 @@ class Configuration extends Component{
             this.setState({ configurations, addFeedModal: false, newConfigurationsData: {
                     feedName: '',
                     feedLink: '',
-                    feedItem: ''
+                    feedDateFormat: ''
                 }});
         });
     }
 
-    editFeed(id, feedName, feedLink, feedItem){
+    editFeed(id, feedName, feedLink, feedDateFormat){
         this.setState({
-            editFeedData: {id, feedName, feedLink, feedItem},
+            editFeedData: {id, feedName, feedLink, feedDateFormat},
             editFeedModal: !this.state.editFeedModal
         })
 
@@ -105,7 +106,7 @@ class Configuration extends Component{
                 <td>{configuration.feedName}</td>
                 <td>{configuration.feedLink}</td>
                 <td>
-                    <button type="button" className="btn btn-success mr-2 mb-1" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedItem)}>Edit</button>
+                    <button type="button" className="btn btn-success mr-2 mb-1" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedDateFormat)}>Edit</button>
                     <button type="button" className="btn btn-danger mb-1" onClick={this.deleteFeed.bind(this, configuration.id)}>Delete</button>
                     <Link to={`/configuration/${configuration.id}`}>
                         <button type="button" className="btn btn-danger">Edit Feed Page</button>
@@ -148,11 +149,11 @@ class Configuration extends Component{
                             }} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="feedItem">Feed Item</Label>
-                            <Input id="feedItem" value={this.state.newFeedData.feedItem} onChange={(e) => {
+                            <Label for="feedDateFormat">Feed Item</Label>
+                            <Input id="feedDateFormat" value={this.state.newFeedData.feedDateFormat} onChange={(e) => {
                                 const { newFeedData } = this.state;
 
-                                newFeedData.feedItem = e.target.value;
+                                newFeedData.feedDateFormat = e.target.value;
 
                                 this.setState({ newFeedData });
                             }} />
@@ -189,11 +190,11 @@ class Configuration extends Component{
                             }} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="feedItem">Feed Item</Label>
-                            <Input id="feedItem" value={this.state.editFeedData.feedItem} onChange={(e) => {
+                            <Label for="feedDateFormat">Feed Item</Label>
+                            <Input id="feedDateFormat" value={this.state.editFeedData.feedDateFormat} onChange={(e) => {
                                 const { editFeedData } = this.state;
 
-                                editFeedData.feedItem = e.target.value;
+                                editFeedData.feedDateFormat = e.target.value;
 
                                 this.setState({ editFeedData });
                             }} />
