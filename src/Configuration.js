@@ -201,7 +201,7 @@ class Configuration extends Component{
                         </FormGroup>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.updateFeed.bind(this)}>Update Feed</Button>{' '}
+                        <Button color="primary" onClick={this.updateFeed.bind(this)}>Update Feed</Button>
                         <Button color="secondary" onClick={this.toggleEditFeedModal.bind(this)}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

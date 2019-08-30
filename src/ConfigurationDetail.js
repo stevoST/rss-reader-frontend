@@ -1,39 +1,56 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
+import {API_BASE_URL} from "./config";
+import {  Button } from 'reactstrap';
 
 
 class ConfigurationDetail extends Component {
 
     state = {
-        id: null,
-        feedName: '',
-        feedLink: '',
-        feedDateFormat: ''
+        editFeedData: {
+            id: '',
+            feedName: '',
+            feedLink: '',
+            feedDateFormat: ''
+        }
     }
 
+
+
     handleFeedNameChange = (event) => {
-        this.setState({feedName: event.target.value});
+        const { editFeedData } = this.state;
+        editFeedData.feedName =  event.target.value;
+        this.setState({editFeedData});
     }
 
     handleFeedLinkChange = (event) => {
-        this.setState({feedLink: event.target.value});
+        const { editFeedData } = this.state;
+        editFeedData.feedLink =  event.target.value;
+        this.setState({editFeedData});
     }
 
     handleFeedDateFormat = (event) => {
-        this.setState({feedDateFormat: event.target.value});
+        const { editFeedData } = this.state;
+        editFeedData.feedDateFormat =  event.target.value;
+        this.setState({editFeedData});
+    }
+
+    updateFeed() {
+        axios.post(API_BASE_URL + '/configuration', this.state.editFeedData).then((response) => {
+        });
     }
 
     componentDidMount() {
         axios.get('http://localhost:8080/configuration/' + this.props.match.params.id).then((response) => {
-               const { id, feedName , feedLink, feedDateFormat } = response.data;
+
                this.setState({
-                   id, feedName , feedLink, feedDateFormat
+                   editFeedData: response.data
                })
         });
 
     }
     render() {
-        const { id, feedName , feedLink, feedDateFormat } = this.state;
+        const { id, feedName , feedLink, feedDateFormat } = this.state.editFeedData;
         return (
             <div className="container mt-5">
 
@@ -62,7 +79,7 @@ class ConfigurationDetail extends Component {
                     <input type="text" value={feedDateFormat} className="form-control" aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default" onChange={this.handleFeedDateFormat}/>
                 </div>
-
+                <Button color="primary" onClick={this.updateFeed.bind(this)}>Update Feed</Button>
             </div>
         )
     }
