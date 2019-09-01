@@ -120,7 +120,7 @@ class Configuration extends Component{
                     <Link to={`/configuration/${configuration.id}`}>
                         <button type="button" className="btn btn-danger">Edit Feed Page</button>
                     </Link>
-                    <Button color="danger" onClick={this.toggleDeleteFeedModal}>yes delete</Button>
+                    <Button color="danger" onClick={this.toggleDeleteFeedModal.bind(this)}>yes delete</Button>
                 </td>
             </tr>
 
