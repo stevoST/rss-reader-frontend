@@ -6,7 +6,9 @@ import {API_BASE_URL} from "./config";
 
 
 class Configuration extends Component{
+
     state = {
+        deleteModal: false,
         configurations: [],
         addFeedModal: false,
         editFeedModal: false,
@@ -43,6 +45,13 @@ class Configuration extends Component{
     toggleEditFeedModal(){
         this.setState({
             editFeedModal: ! this.state.editFeedModal
+        })
+    }
+
+
+    toggleDeleteFeedModal() {
+        this.setState({
+            deleteModal: ! this.state.deleteModal
         })
     }
 
@@ -111,6 +120,7 @@ class Configuration extends Component{
                     <Link to={`/configuration/${configuration.id}`}>
                         <button type="button" className="btn btn-danger">Edit Feed Page</button>
                     </Link>
+                    <Button color="danger" onClick={this.toggleDeleteFeedModal}>yes delete</Button>
                 </td>
             </tr>
 
@@ -123,6 +133,19 @@ class Configuration extends Component{
             <div className="container mt-5">
 
                 <h1>Configuration</h1>
+
+                <Modal isOpen={this.state.deleteModal} toggle={this.toggleDeleteFeedModal.bind(this)}>
+                    <ModalHeader toggle={this.toggleDeleteFeedModal.bind(this)}>Modal title</ModalHeader>
+                    <ModalBody>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary">Do Something</Button>
+                        <Button color="secondary">Cancel</Button>
+                    </ModalFooter>
+                </Modal>
+
+
 
                 <Button className="my-3" color="primary" onClick={this.toggleAddFeedModal.bind(this)}>Add Feed</Button>
                 <Modal isOpen={this.state.addFeedModal} toggle={this.toggleAddFeedModal.bind(this)}>
