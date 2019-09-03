@@ -23,6 +23,10 @@ class Configuration extends Component{
             feedName: '',
             feedLink: '',
             feedDateFormat: ''
+        },
+
+        deleteFeedData: {
+            id: ''
         }
     }
 
@@ -49,10 +53,13 @@ class Configuration extends Component{
     }
 
 
-    toggleDeleteFeedModal() {
+    toggleDeleteFeedModal(id) {
         this.setState({
+            deleteFeedData: {
+                id: id
+            },
             deleteModal: ! this.state.deleteModal
-        })
+        });
     }
 
     addFeed(){
@@ -92,6 +99,9 @@ class Configuration extends Component{
 
     deleteFeed(id){
         axios.delete(API_BASE_URL + 'configuration/' + id).then((response) => {
+            this.setState({
+                deleteModal: !this.state.deleteModal
+            });
             this._refreshFeeds();
         });
     }
@@ -116,11 +126,10 @@ class Configuration extends Component{
                 <td>{configuration.feedLink}</td>
                 <td>
                     <button type="button" className="btn btn-success mr-2 mb-1" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedDateFormat)}>Edit</button>
-                    <button type="button" className="btn btn-danger mb-1" onClick={this.deleteFeed.bind(this, configuration.id)}>Delete</button>
                     <Link to={`/configuration/${configuration.id}`}>
-                        <button type="button" className="btn btn-danger">Edit Feed Page</button>
+                        <button type="button" className="btn btn-danger mb-1">Edit Feed Page</button>
                     </Link>
-                    <Button color="danger" onClick={this.toggleDeleteFeedModal.bind(this)}>yes delete</Button>
+                    <Button color="danger" onClick={this.toggleDeleteFeedModal.bind(this, configuration.id)} className="mr-2">Delete Prompt</Button>
                 </td>
             </tr>
 
@@ -137,11 +146,11 @@ class Configuration extends Component{
                 <Modal isOpen={this.state.deleteModal} toggle={this.toggleDeleteFeedModal.bind(this)}>
                     <ModalHeader toggle={this.toggleDeleteFeedModal.bind(this)}>Modal title</ModalHeader>
                     <ModalBody>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                       Do you really want to delete this feed?
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary">Do Something</Button>
-                        <Button color="secondary">Cancel</Button>
+                        <Button color="danger"onClick={this.deleteFeed.bind(this, this.state.deleteFeedData.id)}>Delete</Button>
+                        <Button color="primary"  onClick={this.toggleDeleteFeedModal.bind(this)}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
 
