@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
 import {API_BASE_URL} from "./config";
+import Moment from 'react-moment';
 import {Button} from 'reactstrap';
 import {Tabs, Tab, TabPanel, TabList} from 'react-web-tabs';
 import "react-web-tabs/dist/react-web-tabs.css";
@@ -9,6 +10,7 @@ import "react-web-tabs/dist/react-web-tabs.css";
 class ConfigurationDetail extends Component {
 
     state = {
+        articles: [],
         editFeedData: {
             id: '',
             feedName: '',
@@ -37,22 +39,40 @@ class ConfigurationDetail extends Component {
     }
 
     updateFeed() {
-        axios.post(API_BASE_URL + '/configuration', this.state.editFeedData).then((response) => {
+        axios.post(API_BASE_URL + 'configuration', this.state.editFeedData).then((response) => {
         });
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/configuration/' + this.props.match.params.id).then((response) => {
+        axios.get(API_BASE_URL + 'configuration/' + this.props.match.params.id).then((response) => {
 
             this.setState({
                 editFeedData: response.data
             })
+
+            axios.get(API_BASE_URL + 'configuration/' + this.props.match.params.id + '/' + this.state.editFeedData.feedName).then((response) => {
+                this.setState({
+                    articles: response.data
+                })
+            });
         });
 
     }
 
     render() {
         const {id, feedName, feedLink, feedDateFormat} = this.state.editFeedData;
+        const articles = this.state.articles.map((article) => {
+
+            return (
+                <div className="jumbotron mt-5" key={article.id}>
+                    <a href={article.link}><h4>{article.title}</h4></a>
+                    {article.description}
+                    <br />
+                    <b><Moment>{article.test}</Moment></b>
+                </div>
+
+            )
+        });
         return (
             <div className="container mt-5">
 
@@ -93,7 +113,11 @@ class ConfigurationDetail extends Component {
                         <Button color="primary" onClick={this.updateFeed.bind(this)}>Update Feed</Button>
                     </TabPanel>
                     <TabPanel tabId="two">
-                        <p>Add content</p>
+                        <p>
+                            <div className="col"></div>
+                            <div className="col-8">{articles}</div>
+                            <div className="col"></div>
+                        </p>
                     </TabPanel>
                 </Tabs>
 
