@@ -125,9 +125,9 @@ class Configuration extends Component{
                 <td>{configuration.feedName}</td>
                 <td>{configuration.feedLink}</td>
                 <td>
-                    <button type="button" className="btn btn-success mr-2 mb-1" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedDateFormat)}>Edit</button>
+                    <Button type="button" className="btn btn-success mr-2 mb-1" onClick={this.editFeed.bind(this, configuration.id, configuration.feedName, configuration.feedLink, configuration.feedDateFormat)}>Edit</Button>
                     <Link to={`/configuration/${configuration.id}`}>
-                        <button type="button" className="btn btn-danger mb-1">Edit Feed Page</button>
+                        <Button type="button" className="btn btn-danger mb-1">Edit Feed Page</Button>
                     </Link>
                     <Button color="danger" onClick={this.toggleDeleteFeedModal.bind(this, configuration.id)} className="mr-2">Delete Prompt</Button>
                 </td>

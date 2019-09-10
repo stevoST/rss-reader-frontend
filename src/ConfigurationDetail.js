@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
 import {API_BASE_URL} from "./config";
+import {Link} from 'react-router-dom'
 import Moment from 'react-moment';
 import {Button} from 'reactstrap';
 import {Tabs, Tab, TabPanel, TabList} from 'react-web-tabs';
@@ -110,14 +111,15 @@ class ConfigurationDetail extends Component {
                                    aria-label="Sizing example input"
                                    aria-describedby="inputGroup-sizing-default" onChange={this.handleFeedDateFormat}/>
                         </div>
-                        <Button color="primary" onClick={this.updateFeed.bind(this)}>Update Feed</Button>
+                        <Button color="primary" className="mr-1" onClick={this.updateFeed.bind(this)}>Update Feed</Button>
+                        <Link to={`/configuration`}>
+                            <Button color="primary">Cancel</Button>
+                        </Link>
                     </TabPanel>
                     <TabPanel tabId="two">
-                        <p>
                             <div className="col"></div>
                             <div className="col-8">{articles}</div>
                             <div className="col"></div>
-                        </p>
                     </TabPanel>
                 </Tabs>
 
