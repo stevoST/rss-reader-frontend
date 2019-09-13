@@ -3,6 +3,7 @@ import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import {API_BASE_URL} from "./config";
+import {Button} from "reactstrap";
 
 class Feeds extends Component {
     state = {
@@ -14,6 +15,11 @@ class Feeds extends Component {
             this.setState({
                 articles: response.data
             })
+        });
+    }
+
+    fetchNewFeeds() {
+        axios.get(API_BASE_URL + 'articles/fetcharticles').then((response) => {
         });
     }
 
@@ -34,11 +40,13 @@ class Feeds extends Component {
         return (
             <div className="App">
 
-                <div className="container">
+                <div className="container mt-5">
                     <div className="row">
                         <div className="col"></div>
                         <div className="col-8">{articles}</div>
-                        <div className="col"></div>
+                        <div className="col">
+                            <Button className="mt-5" color="primary" onClick={this.fetchNewFeeds.bind(this)}>Fetch new feeds</Button>
+                        </div>
                     </div>
 
                 </div>
