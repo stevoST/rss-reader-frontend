@@ -69,7 +69,7 @@ class ConfigurationDetail extends Component {
                     <a href={article.link}><h4>{article.title}</h4></a>
                     {article.description}
                     <br />
-                    <b><Moment>{article.test}</Moment></b>
+                    <b><Moment>{article.pubDateFormatted}</Moment></b>
                 </div>
 
             )
