@@ -15,6 +15,9 @@ function Nav() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/configuration">Configuration</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/settings">Settings</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
