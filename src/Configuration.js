@@ -30,7 +30,7 @@ class Configuration extends Component{
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         axios.get(API_BASE_URL + 'configuration').then((response) => {
             this.setState({
                 configurations: response.data

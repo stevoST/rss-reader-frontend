@@ -10,7 +10,7 @@ class Feeds extends Component {
         articles: []
     }
 
-    componentWillMount() {
+    componentDidMount() {
         axios.get(API_BASE_URL + 'articles').then((response) => {
             this.setState({
                 articles: response.data

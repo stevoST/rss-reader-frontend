@@ -4,11 +4,7 @@ import axios from "axios/index";
 
 class Settings extends Component {
     state = {
-        settings: {
-            id: '',
-            property: '',
-            value: ''
-        }
+        settings: []
     }
 
     componentDidMount() {
@@ -22,19 +18,25 @@ class Settings extends Component {
 
     }
     render() {
-        const {id, property, value} = this.state.settings;
+        const settings = this.state.settings.map((settingsRow) => {
+
+            return (
+                <div className="input-group mb-3" key={settingsRow.id}>
+                <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-default">{settingsRow.property}</span>
+        </div>
+            <input type="text" value={settingsRow.value} className="form-control"
+                   aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default"/>
+        </div>
+
+            )
+        });
         return (
 
             <div className="container mt-5">
                 <h1>Settings</h1>
-                <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-default">Property</span>
-                    </div>
-                    <input type="text" value={property} className="form-control"
-                           aria-label="Sizing example input"
-                           aria-describedby="inputGroup-sizing-default"/>
-                </div>
+                {settings}
             </div>
         )
 
