@@ -19,14 +19,15 @@ class Settings extends Component {
     }
     render() {
         const settings = this.state.settings.map((settingsRow) => {
-            if (settingsRow.property === "tracked_words") {
-                settingsRow.property = "Tracked Words";
+            let property = settingsRow.property;
+            if (property === "tracked_words") {
+                property = "Tracked Words";
             }
 
             return (
                 <div className="input-group mb-3" key={settingsRow.id}>
                 <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroup-sizing-default">{settingsRow.property}</span>
+                <span className="input-group-text" id="inputGroup-sizing-default">{property}</span>
         </div>
             <input type="text" value={settingsRow.value} className="form-control"
                    aria-label="Sizing example input"
