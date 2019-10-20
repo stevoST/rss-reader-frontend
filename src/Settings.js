@@ -19,6 +19,9 @@ class Settings extends Component {
     }
     render() {
         const settings = this.state.settings.map((settingsRow) => {
+            if (settingsRow.property === "tracked_words") {
+                settingsRow.property = "Tracked Words";
+            }
 
             return (
                 <div className="input-group mb-3" key={settingsRow.id}>
