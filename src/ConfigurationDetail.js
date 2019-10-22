@@ -9,7 +9,6 @@ import "react-web-tabs/dist/react-web-tabs.css";
 
 
 class ConfigurationDetail extends Component {
-
     state = {
         articles: [],
         editFeedData: {
@@ -19,7 +18,6 @@ class ConfigurationDetail extends Component {
             feedDateFormat: ''
         }
     }
-
 
     handleFeedNameChange = (event) => {
         const {editFeedData} = this.state;
@@ -60,20 +58,19 @@ class ConfigurationDetail extends Component {
 
     }
 
+    articles = () => this.state.articles.map((article) =>  (
+            <div className="jumbotron mt-5" key={article.id}>
+                <a href={article.link}><h4>{article.title}</h4></a>
+                {article.description}
+                <br />
+                <b><Moment>{article.pubDateFormatted}</Moment></b>
+            </div>
+
+        ))
+
     render() {
         const {id, feedName, feedLink, feedDateFormat} = this.state.editFeedData;
-        const articles = this.state.articles.map((article) => {
 
-            return (
-                <div className="jumbotron mt-5" key={article.id}>
-                    <a href={article.link}><h4>{article.title}</h4></a>
-                    {article.description}
-                    <br />
-                    <b><Moment>{article.pubDateFormatted}</Moment></b>
-                </div>
-
-            )
-        });
         return (
             <div className="container mt-5">
 
@@ -118,7 +115,7 @@ class ConfigurationDetail extends Component {
                     </TabPanel>
                     <TabPanel tabId="two">
                             <div className="col"></div>
-                            <div className="col-8">{articles}</div>
+                            <div className="col-8">{this.articles()}</div>
                             <div className="col"></div>
                     </TabPanel>
                 </Tabs>
