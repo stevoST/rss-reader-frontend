@@ -114,12 +114,7 @@ class Configuration extends Component{
         });
     }
 
-    render()
-    {
-        const configurations = this.state.configurations.map((configuration) => {
-            return (
-
-
+    configurations = () => this.state.configurations.map((configuration) => (
             <tr key={configuration.id} className="mt-5">
                 <td>{configuration.id}</td>
                 <td>{configuration.feedName}</td>
@@ -135,8 +130,11 @@ class Configuration extends Component{
 
 
 
-            )
-        });
+        ))
+
+    render()
+    {
+
 
         return (
             <div className="container mt-5">
@@ -251,7 +249,7 @@ class Configuration extends Component{
                             </tr>
                             </thead>
                             <tbody>
-                            {configurations}
+                            {this.configurations()}
                             </tbody>
                         </table>
                         </div>

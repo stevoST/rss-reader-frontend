@@ -23,27 +23,23 @@ class Feeds extends Component {
         });
     }
 
+    articles = () => this.state.articles.map((article) => (
+            <div className="jumbotron mt-5" key={article.id}>
+                <a href={article.link}><h4>{article.title}</h4></a>
+                {article.description}
+                <br />
+                <b><Moment>{article.pubDateFormatted}</Moment></b>
+            </div>
+        ))
+
     render() {
-        const articles = this.state.articles.map((article) => {
-
-            return (
-                <div className="jumbotron mt-5" key={article.id}>
-                    <a href={article.link}><h4>{article.title}</h4></a>
-                    {article.description}
-                    <br />
-                    <b><Moment>{article.pubDateFormatted}</Moment></b>
-                </div>
-
-            )
-        });
-
         return (
             <div className="App">
 
                 <div className="container mt-5">
                     <div className="row">
                         <div className="col"></div>
-                        <div className="col-8">{articles}</div>
+                        <div className="col-8">{this.articles()}</div>
                         <div className="col">
                             <Button className="mt-5" color="primary" onClick={this.fetchNewFeeds.bind(this)}>Fetch new feeds</Button>
                         </div>

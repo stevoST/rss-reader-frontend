@@ -17,30 +17,33 @@ class Settings extends Component {
         });
 
     }
-    render() {
-        const settings = this.state.settings.map((settingsRow) => {
-            let property = settingsRow.property;
-            if (property === "tracked_words") {
-                property = "Tracked Words";
-            }
 
-            return (
-                <div className="input-group mb-3" key={settingsRow.id}>
+    settings = () => this.state.settings.map((settingsRow) => {
+        let property = settingsRow.property;
+        if (property === "tracked_words") {
+            property = "Tracked Words";
+        }
+
+        return (
+            <div className="input-group mb-3" key={settingsRow.id}>
                 <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroup-sizing-default">{property}</span>
-        </div>
-            <input type="text" value={settingsRow.value} className="form-control"
-                   aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default"/>
-        </div>
+                    <span className="input-group-text" id="inputGroup-sizing-default">{property}</span>
+                </div>
+                <input type="text" value={settingsRow.value} className="form-control"
+                       aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default"/>
+            </div>
 
-            )
-        });
+        )
+    });
+
+    render() {
+
         return (
 
             <div className="container mt-5">
                 <h1>Settings</h1>
-                {settings}
+                {this.settings()}
             </div>
         )
 
