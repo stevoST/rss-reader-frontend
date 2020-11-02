@@ -41,7 +41,7 @@ class Settings extends Component {
 
         return (
 
-            <div className="container mt-5">
+            <div className="container">
                 <h1>Settings</h1>
                 {this.settings()}
             </div>

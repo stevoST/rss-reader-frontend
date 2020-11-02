@@ -72,7 +72,7 @@ class ConfigurationDetail extends Component {
         const {id, feedName, feedLink, feedDateFormat} = this.state.editFeedData;
 
         return (
-            <div className="container mt-5">
+            <div className="container">
 
                 <h1>Detail Page</h1>
                 <Tabs defaultTab="one">

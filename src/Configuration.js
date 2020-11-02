@@ -137,7 +137,7 @@ class Configuration extends Component{
 
 
         return (
-            <div className="container mt-5">
+            <div className="container">
 
                 <h1>Configuration</h1>
 

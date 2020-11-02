@@ -3,7 +3,7 @@ import React from 'react';
 
 function Register() {
     return (
-        <div className="container mt-5">
+        <div className="container">
             <h1>Register Page</h1>
         </div>
     )

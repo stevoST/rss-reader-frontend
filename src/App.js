@@ -14,11 +14,11 @@ import Login from "./Login";
 function App() {
     return (
         <Router>
-            <div>
+            <div className="container mt-5">
                 <Nav/>
                 {/*<switch>*/}
-                    <Route path="/Login" exact component={Login}/>
-                    <Route path="/Register" exact component={Register}/>
+                    <Route path="/login" exact component={Login}/>
+                    <Route path="/register" exact component={Register}/>
                     <Route path="/settings" exact component={Settings}/>
                     <Route path="/configuration" exact component={Configuration}/>
                     <Route path="/feeds" component={Feeds}/>

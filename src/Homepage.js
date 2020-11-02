@@ -3,7 +3,7 @@ import React from 'react';
 
 function Homepage() {
     return (
-        <div className="container mt-5">
+        <div className="container">
             <h1>Homepage</h1>
         </div>
     )
