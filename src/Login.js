@@ -9,8 +9,10 @@ import {API_BASE_URL} from "./config";
 class Login extends Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        kokotina: {}
     }
+
 
     handleUsernameChange = (event) => {
         this.setState({username: event.target.value});
@@ -21,17 +23,23 @@ class Login extends Component {
     }
 
     login() {
+        const kokotina = {};
         const test= {
             username: 'Fred',
             password: '23'
         };
+        Event.preventDefault();
         axios.post(API_BASE_URL + 'auth/login',{
             username: 'Fred',
             password: '23'
         })
-            .then((response) => {});
-        console.log("state: "  + API_BASE_URL);
-        debugger;
+            .then(response => localStorage.setItem("user", JSON.stringify(response.data)));
+
+            /*{
+                this.setState({kokotina: response});
+            })
+            .catch(err => console.log("TUTO JE CHYBA: " + err));
+        console.log("response: "  + this.state.kokotina);*/
     }
 
     render() {
