@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
+import "./App.css";
+
 import Nav from './Nav';
 import Configuration from './Configuration';
 import Feeds from './Feeds';

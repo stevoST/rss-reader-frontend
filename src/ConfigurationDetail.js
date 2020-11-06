@@ -86,9 +86,12 @@ class ConfigurationDetail extends Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Feed Name</span>
                             </div>
-                            <input type="text" value={feedName} className="form-control"
+                            <input type="text"
+                                   value={feedName}
+                                   className="form-control"
                                    aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default" onChange={this.handleFeedNameChange}/>
+                                   aria-describedby="inputGroup-sizing-default"
+                                   onChange={this.handleFeedNameChange}/>
                         </div>
 
                         <div className="input-group mb-3">
