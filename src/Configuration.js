@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from "axios/index";
+import axios from "axios";
 import {Link} from 'react-router-dom'
 import { Label, Input, FormGroup,  Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {API_BASE_URL} from "./config";

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {API_BASE_URL} from "./config";
-import axios from "axios/index";
+import axios from "axios";
 
 class Settings extends Component {
     state = {
